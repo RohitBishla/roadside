@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import InputBox from "./inputBox";
 import Papa from "papaparse"
 import ResultPage from "./resultPage";
+// const spawn =require('child_process').spawn
 const HomePage = () => {
     const [linespace, setlinespace] = useState("10px")
     const [issubmit, setissubmit] = useState(0);
@@ -13,7 +14,6 @@ const HomePage = () => {
     const [CSVData, setCSVData] = useState("");
     var commonConfig = { delimiter: "," };
     function parseData(e) {
-        console.log(e);
         Papa.parse(
             e.target.files[0],
             {
@@ -26,9 +26,19 @@ const HomePage = () => {
             }
         );
     }
-    
-    console.log(CSVData);
-    console.log(issubmit);
+    // let strigifiedData=JSON.stringify(CSVData);
+    // const py =spawn('python', ['script.py', strigifiedData]);
+    // const [resultData, setresultData]=useState();
+    // useEffect(()=>{
+    //     let resultString=""
+    //     py.stdout.on('data', function(stdData){
+    //         resultString+=stdData.toString();
+    //     })
+    //     py.stdout.on('end', function(){
+    //         setresultData(JSON.parse(resultString));
+    //     })
+    // })
+    // console.log(resultData);
     if (issubmit === 0) {
 
         return (
