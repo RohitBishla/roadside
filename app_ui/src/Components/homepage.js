@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, {  useState } from "react";
+import React, { useState,useEffect } from "react";
 import InputBox from "./inputBox";
 import Papa from "papaparse"
 import ResultPage from "./resultPage";
@@ -7,13 +7,14 @@ import ResultPage from "./resultPage";
 const HomePage = () => {
     const [linespace, setlinespace] = useState("10px")
     const [issubmit, setissubmit] = useState(0);
-    function changePage(e) {
-        setissubmit(1);
-    }
+
     //code added
     const [CSVData, setCSVData] = useState("");
     var commonConfig = { delimiter: "," };
+    const [totalfile, settotalfile] = useState();
+    const [jsonfile, setjsonfile] = useState();
     function parseData(e) {
+        console.log(e);
         Papa.parse(
             e.target.files[0],
             {
@@ -26,6 +27,28 @@ const HomePage = () => {
             }
         );
     }
+    function jsonDatareciever(e) {
+        const fileReader = new FileReader();
+        fileReader.readAsText(e.target.files[0], "UTF-8");
+        fileReader.onload = e => {
+            console.log("e.target.result", e.target.result);
+            setjsonfile(e.target.result);
+        };
+    }
+    function changePage(e) {
+        settotalfile([jsonfile, CSVData]);
+        setissubmit(1);
+    }
+    useEffect(() => {
+        fetch("http://localhost:3000/",{
+            method:'POST',
+            mode:'cors',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+    }, []);
+    // console.log(totalfile);
     // let strigifiedData=JSON.stringify(CSVData);
     // const py =spawn('python', ['script.py', strigifiedData]);
     // const [resultData, setresultData]=useState();
@@ -68,6 +91,7 @@ const HomePage = () => {
                         <InputBox
                             text="Source JSON"
                             type="application/JSON"
+                            jsonDatareciever={jsonDatareciever}
                         />
                         <div style={{ height: "50px" }}>
 

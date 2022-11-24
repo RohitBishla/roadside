@@ -5,6 +5,7 @@ const router = express.Router();
 
 // var transform = require("node-json-transform").transform;
 import { transform } from "node-json-transform";
+import spawn from 'child_process'
 // or
 // var { transform } = require("node-json-transform");
 
@@ -51,6 +52,18 @@ import { transform } from "node-json-transform";
 
 export const postJson = async (req, res) => {
   const { source, map } = req.querry;
+  let strigifiedData = JSON.stringify(map);
+  const py = spawn('python', ['script.py', strigifiedData]);
+  var resultString = "";
+  var resultData = ""
+  py.stdout.on('data', function (stdData) {
+    resultString += stdData.toString();
+  })
+  py.stdout.on('end', function () {
+    resultData=JSON.parse(resultString);
+  })
+
+  // console.log(resultData);
   // const temp = {
   //   id: "1",
   //   regin: "India",
@@ -62,7 +75,7 @@ export const postJson = async (req, res) => {
   //   pakistan: "fasd",
   // };
   try {
-    const result = transform({ source }, { map });
+    const result = transform({ source }, { resultData });
 
     const parvati = result;
     res.json(parvati);
