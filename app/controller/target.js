@@ -1,85 +1,77 @@
-import express from "express";
+// import express from "express";
+// // const express = require("express");
 
-const router = express.Router();
+// const router = express.Router();
 
-import { transform } from "node-json-transform";
-// var transform = require("node-json-transform").transform;
-// or
-// var { transform } = require("node-json-transform");
+// // var transform = require("node-json-transform").transform;
+// import { transform } from "node-json-transform";
+// import { getSource } from "./source.js";
+// // import spawn from "child_process";
+// // or
+// // var { transform } = require("node-json-transform");
+// export function dummy(source, map) {
+//   var result = transform(
+//     { source },
+//     {
+//       map,
+//     }
+//   );
+//   console.log(result);
+//   try {
+//     const result = transform({ source }, { map });
 
-var result = transform(
-  {
-    id: "122-34-6543",
-    region: "NA",
-    firstName: "Leanne",
-    lastName: "Graham",
-    address: {
-      street: "Kulas Light",
-      suite: "Apt. 556",
-      city: "Gwenborough",
-      zipcode: "92998-3874",
-    },
-    occupation: "self-employed",
-    age: 29,
-    loanHistory: [
-      {
-        princicpal: 40000,
-        periodInYears: "3",
-        rateOfInterest: 10,
-        collateral: [
-          {
-            assetName: "property",
-            estimatedValues: 7000,
-          },
-        ],
-      },
-      {
-        princicpal: 140000,
-        periodInYears: "4",
-        rateOfInterest: 12,
-        isCommercial: true,
-        collateral: [
-          {
-            assetName: "condo",
-            estimatedValues: 30000,
-          },
-        ],
-      },
-      {
-        princicpal: 60000,
-        periodInYears: "4",
-        rateOfInterest: 12,
-      },
-    ],
-    liquid_assets: 100000,
-    non_liquid_assets: 300000,
-  },
-  {
-    item: {
-      SSN: ["ENUM(region)", "-", "id"],
-      CustomerFullName: ["firstName", "lastName"],
-      CustomerAddress: ["address.street", "address.suite"],
-      CustomerCity: ["address.city"],
-      CustomerZipCode: ["address.zipcode"],
-      CustomerProfession: ["ENUM(.occupation)"],
-      CustomerAge: ["age"],
-      LoanHistory: [
-        "IF(.loanHistory.item.collateral) THEN .loanHistory.item.collateral.estimatedValues ELSE 0",
-      ],
-      TotalAssets: ["liquid_assets", "non_liquid_assets"],
-    },
-  }
-);
-console.log(result);
+//     const final = result;
+//     res.json(final);
 
-export const getPost = async (req, res) => {
-  const { post } = result;
-  try {
-    const parvati = await post;
-    res.json(post);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// // const temp = {
+// //   id: "1",
+// //   regin: "India",
+// //   pakistan: "fasd",
+// // };
+// // const temp2 = {
+// //   id: "34",
+// //   regin: "Japan",
+// //   pakistan: "fasd",
+// // };
 
-export default router;
+// // export const getPost = async (req, res) => {
+// //   const { source, map } = req.querry;
+// // //   // const temp = {
+// // //   //   id: "1",
+// // //   //   regin: "India",
+// // //   //   pakistan: "fasd",
+// // //   // };
+// // //   // const temp2 = {
+// // //   //   id: "34",
+// // //   //   regin: "Japan",
+// // //   //   pakistan: "fasd",
+// // //   // };
+// // //   try {
+// // //     const result = transform(
+// // //       {
+// // //         temp,
+// // //       },
+// // //       {
+// // //         temp2,
+// // //       }
+// // //     );
+
+// // //     const parvati = result;
+// // //     res.json(parvati);
+
+// // //     console.log(result);
+// // //   } catch (error) {
+// // //     console.log(error);
+// // //   }
+// // // };
+
+// // export const getPost = async (req, res) => {
+// //   dummy()
+// // };
+
+// export default router;

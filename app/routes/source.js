@@ -7,7 +7,7 @@ import { getSource } from "../controller/source.js";
 
 const router = express.Router();
 
-router.get("/source", getSource);
+router.post("/", getSource);
 // router.post("/target", postJson);
 
 export default router;
