@@ -2,11 +2,14 @@ import express from "express";
 // const express = require("express");
 
 // import { postJson } from "../controller/target.js";
-import { getPost } from "../controller/source.js";
+import { getSource } from "../controller/source.js";
+// const getPost = require("../controller/source.js");
 
 const router = express.Router();
 
-router.get("/source", getPost);
+router.get("/source", getSource);
 // router.post("/target", postJson);
 
 export default router;
+
+// module.exports = router;
