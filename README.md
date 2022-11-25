@@ -20,7 +20,7 @@ https://www.canva.com/design/DAFS3yxCXzE/RnURgu4sTkfu4JO1hSVWPQ/edit?utm_content
 [linkedin-shield5]: https://img.shields.io/static/v1?label=&message=Divy&color=black&style=for-the-badge&logo=linkedin
 [linkedin-shield6]: https://img.shields.io/static/v1?label=&message=Rohit&color=black&style=for-the-badge&logo=linkedin
 [contributors-url1]: https://www.linkedin.com/in/awasthi-anuj/
-[contributors-url2]: https://www.linkedin.com/in/ayush-mehta-6997a4235/
+[contributors-url2]: https://github.com/ayushbhaimehta
 [contributors-url3]: https://www.linkedin.com/in/sanket-kumar-singh-b698191b8/
 [contributors-url4]: https://www.linkedin.com/in/prakhartomar53/
 [contributors-url5]: https://www.linkedin.com/in/divy-goyal/
